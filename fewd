@@ -713,7 +713,7 @@ task.spawn(function()
             if not existingSpeed then
                 local speedStatus = Instance.new("NumberValue")
                 speedStatus.Name = "SpeedStatus"
-                speedStatus.Value = 1.7
+                speedStatus.Value = 2.5
                 speedStatus.Parent = speedFolder
             end
         else
