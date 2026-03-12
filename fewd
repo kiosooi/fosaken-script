@@ -449,9 +449,9 @@ local UIS = game:GetService("UserInputService")
 local player = game.Players.LocalPlayer
 
 local LungeEnabled = false
-local delayBeforePush = 0.5
+local delayBeforePush = 0.565
 local cooldownTime = 40
-local pushPower = 115
+local pushPower = 120
 local canUse = true
 
 local Section = Tab:CreateSection("Movement (Shedletsky)")
