@@ -944,11 +944,11 @@ Tab:CreateToggle({
                             if not speedStatus then
                                 speedStatus = Instance.new("NumberValue")
                                 speedStatus.Name = "SpeedStatus"
-                                speedStatus.Value = 1.2
+                                speedStatus.Value = 1.1
                                 speedStatus.Parent = speedFolder
                             else
-                                if speedStatus.Value ~= 1.2 then
-                                    speedStatus.Value = 1.2
+                                if speedStatus.Value ~= 1.1 then
+                                    speedStatus.Value = 1.1
                                 end
                             end
                         end
