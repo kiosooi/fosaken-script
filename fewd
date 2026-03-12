@@ -607,6 +607,58 @@ UIS.InputBegan:Connect(function(input, gameProcessed)
     end)
 end)
 
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local FlameBoost = false
+
+local Section = Tab:CreateSection("Movement (Pyro)")
+
+Tab:CreateToggle({
+    Name = "Flame Thrower speed boost",
+    CurrentValue = false,
+    Callback = function(Value)
+        FlameBoost = Value
+    end,
+})
+
+task.spawn(function()
+    while true do
+        task.wait(0.3)
+        if not FlameBoost then continue end
+
+        local survivorsFolder = workspace:FindFirstChild("Players") and workspace.Players:FindFirstChild("Survivors")
+        if not survivorsFolder then continue end
+
+        local targetModel = nil
+
+        for _, model in pairs(survivorsFolder:GetChildren()) do
+            if model:IsA("Model") and model.Name == "Pyro" then
+                local username = model:GetAttribute("Username")
+                if username == player.Name then
+                    targetModel = model
+                    break
+                end
+            end
+        end
+
+        if not targetModel then continue end
+
+        local speedFolder = targetModel:FindFirstChild("SpeedMultipliers")
+        if not speedFolder then continue end
+
+        local stunValue = speedFolder:FindFirstChild("StunningKiller")
+        if stunValue then
+            if not speedFolder:FindFirstChild("SpeedStatus") then
+                local speedStatus = Instance.new("NumberValue")
+                speedStatus.Name = "SpeedStatus"
+                speedStatus.Value = 1.7
+                speedStatus.Parent = speedFolder
+            end
+        end
+    end
+end)
+
 -- Movement (Noli) section
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
