@@ -545,6 +545,8 @@ UIS.InputBegan:Connect(function(input, gameProcessed)
     end
 end)
 
+local Section = Tab:CreateSection("Movement (Jane Doe)")
+
 local UIS = game:GetService("UserInputService")
 local player = game.Players.LocalPlayer
 
